@@ -48,31 +48,36 @@ public class ArticleDAO {
 	 */
 	public Boolean ajouterArticle(String nom, String contenu, Utilisateur auteur) {
 		Article article = new Article(nom, contenu, auteur);
-		Boolean supprOK = false;
+		Boolean ok = false;
 		tx.begin();
 		em.persist(article);
-		supprOK = true;
+		ok = true;
 		tx.commit();
-		return supprOK;
+		return ok;
 	}
 	
 	/*
 	 * supprimerArticle()
 	 */
 	public Boolean supprimerArticle(Article article) {
-		Boolean supprOK = false;
+		Boolean ok = false;
 		tx.begin();
 		em.remove(article);
-		supprOK = true;
+		ok = true;
 		tx.commit();
-		return supprOK;
+		return ok;
 	}
 	
 	/*
 	 * recupererArticleById()
 	 */
-	public static Article recupererArticleById (int id) {
-		
+	public Article getArticleById (int id) {
+		Article article = new Article();
+		tx.begin();
+//		em.(article);
+		tx.commit();
+		return article;
+
 //		String request = "SELECT * FROM article WHERE"
 //				+ " idArticle="+id;
 //		try {
@@ -91,7 +96,6 @@ public class ArticleDAO {
 //		} catch (SQLException e) {
 //				e.printStackTrace();
 //			}
-		return null;
 	}
 	
 	/*
